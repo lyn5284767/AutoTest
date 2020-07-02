@@ -1,0 +1,25 @@
+﻿<Window x:Class="Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1024" WindowState="Maximized" Background="#F5F6FA">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ListView Name="testList" FontSize="18">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="序号" Width="50" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                    <GridViewColumn Header="钻杆尺寸" Width="150" DisplayMemberBinding="{Binding PipeName}"></GridViewColumn>
+                    <GridViewColumn Header="采样值" Width="200" DisplayMemberBinding="{Binding SampleValue}"></GridViewColumn>
+                    <GridViewColumn Header="标定" Width="200" DisplayMemberBinding="{Binding SettingValue}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row="1" Width="100" HorizontalAlignment="Right" Click="Button_Click">开始</Button>
+    </Grid>
+</Window>
