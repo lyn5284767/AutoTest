@@ -13,7 +13,7 @@
                 <dxga:CircularEcoModel />
             </dxga:CircularGaugeControl.Model>
             <dxga:CircularGaugeControl.Scales>
-                <dxga:ArcScale StartValue="0" EndValue="200">
+                <dxga:ArcScale StartValue="{Binding ElementName=uc,Path=SValue}" EndValue="{Binding ElementName=uc,Path=EValue}">
                     <dxga:ArcScale.Layers>
                         <dxga:ArcScaleLayer />
                     </dxga:ArcScale.Layers>

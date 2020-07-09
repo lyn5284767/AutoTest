@@ -725,6 +725,7 @@ namespace DatabaseLib
                         connection.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     SqlCommand cmd = new SqlCommand(SQL, connection);
+                    da.SelectCommand = cmd;
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     return ConvertToModel<T>(dt);

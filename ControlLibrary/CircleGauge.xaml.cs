@@ -20,6 +20,8 @@ namespace ControlLibrary
     public partial class CircleGauge : UserControl
     {
         public static readonly DependencyProperty CurValueProperty;
+        public static readonly DependencyProperty SValueProperty;
+        public static readonly DependencyProperty EValueProperty;
 
         public CircleGauge()
         { 
@@ -29,9 +31,21 @@ namespace ControlLibrary
         static CircleGauge()
         {
             CurValueProperty = DependencyProperty.Register("CurValue", typeof(int), typeof(CircleGauge), new PropertyMetadata((int)0));
+            CurValueProperty = DependencyProperty.Register("SValue", typeof(int), typeof(CircleGauge), new PropertyMetadata((int)0));
+            CurValueProperty = DependencyProperty.Register("EValue", typeof(int), typeof(CircleGauge), new PropertyMetadata((int)200));
         }
 
         public int CurValue
+        {
+            get { return (int)GetValue(CurValueProperty); }
+            set { SetValue(CurValueProperty, value); }
+        }
+        public int SValue
+        {
+            get { return (int)GetValue(CurValueProperty); }
+            set { SetValue(CurValueProperty, value); }
+        }
+        public int EValue
         {
             get { return (int)GetValue(CurValueProperty); }
             set { SetValue(CurValueProperty, value); }
