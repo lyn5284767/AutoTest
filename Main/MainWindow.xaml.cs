@@ -73,10 +73,10 @@ namespace Main
                 }
                 else
                 {
-                    int now = 0;
-                    if (i == -1 || i == 0) now = 0;
-                    else now = i;
-                    ShowDate showDate = showDateList[now];
+                    //int now = 0;
+                    //if (i == -1 || i == 0) now = 0;
+                    //else now = i;
+                    ShowDate showDate = showDateList[i];
                     if (showDate.Protocal != null && showDate.Protocal != string.Empty)
                     {
                         byte[] byteToSend = StrToByte(showDate.Protocal.Split(','));
@@ -182,10 +182,10 @@ namespace Main
                 }
                 else
                 {
-                    int now = 0;
-                    if (i == -1 || i == 0) now = 0;
-                    else now = i;
-                    ShowDate showDate = showDateList[now];
+                    //int now = 0;
+                    //if (i == -1 || i == 0) now = 0;
+                    //else now = i;
+                    ShowDate showDate = showDateList[i];
                     if (showDate.Protocal != null && showDate.Protocal != string.Empty)
                     {
                         byte[] byteToSend = StrToByte(showDate.Protocal.Split(','));

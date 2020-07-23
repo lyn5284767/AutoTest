@@ -8,6 +8,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using DataAssistant;
 using Log;
 
 namespace DatabaseLib
@@ -165,19 +166,19 @@ namespace DatabaseLib
                         m_ConnStr = sb.ToString();
                     }
                 }
-
-                switch (m_type.ToUpper())
-                {
-                    case "MSSQL":
-                        _ins = new MssqlFactory();
-                        break;
-                    case "ACCESS":
-                        _ins = new AccessFactory();
-                        break;
-                    default:
-                        _ins = new AccessFactory();
-                        break;
-                }
+                _ins = new SQLiteFactory();
+                //switch (m_type.ToUpper())
+                //{
+                //    case "MSSQL":
+                //        _ins = new MssqlFactory();
+                //        break;
+                //    case "ACCESS":
+                //        _ins = new AccessFactory();
+                //        break;
+                //    default:
+                //        _ins = new AccessFactory();
+                //        break;
+                //}
             } 
             catch (Exception e)
             {
