@@ -1,6 +1,5 @@
 ﻿using COM.Common;
 using DatabaseLib;
-using DevExpress.Charts.Native;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

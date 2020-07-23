@@ -26,10 +26,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <!--<RowDefinition/>-->
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="lvList" FontSize="20" FontFamily="微软雅黑" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <DataGrid Name="lvList" IsReadOnly="True" FontSize="20" FontFamily="微软雅黑" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="16" Header="序号" Width="50" Binding="{Binding ID}"/>
                 <DataGridTextColumn FontSize="16" Header="检测项目" Width="200" Binding="{Binding Name}"/>
@@ -38,6 +39,7 @@
                 <DataGridTextColumn FontSize="16" Header="检测结果" Width="100" Binding="{Binding Result}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <!--<controllibrary:CircleGauge SValue="0" EValue="200" CurValue="80"></controllibrary:CircleGauge>-->
         <StackPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Right">
             <TextBlock Name="tbTips" Text="待测试" Margin="0,0,20,0" Width="200"></TextBlock>
             <Label>成功:</Label>

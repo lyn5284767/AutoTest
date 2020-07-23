@@ -10,24 +10,24 @@
     <Grid>
         <dxga:CircularGaugeControl HorizontalAlignment="Center" Width="320">
             <dxga:CircularGaugeControl.Model>
-                <dxga:CircularEcoModel />
+                <dxga:CircularEcoModel/>
             </dxga:CircularGaugeControl.Model>
             <dxga:CircularGaugeControl.Scales>
                 <dxga:ArcScale StartValue="{Binding ElementName=uc,Path=SValue}" EndValue="{Binding ElementName=uc,Path=EValue}">
                     <dxga:ArcScale.Layers>
-                        <dxga:ArcScaleLayer />
+                        <dxga:ArcScaleLayer/>
                     </dxga:ArcScale.Layers>
                     <dxga:ArcScale.Needles>
                         <dxga:ArcScaleNeedle IsInteractive="True" x:Name="pressureNeedle" Value="{Binding ElementName=uc,Path=CurValue}"/>
                     </dxga:ArcScale.Needles>
                     <dxga:ArcScale.Ranges>
-                        <dxga:ArcScaleRange StartValue="0" EndValue="100" />
-                        <dxga:ArcScaleRange StartValue="100" EndValue="150" />
-                        <dxga:ArcScaleRange StartValue="150" EndValue="200" />
+                        <dxga:ArcScaleRange StartValue="0%" EndValue="30%" />
+                        <dxga:ArcScaleRange StartValue="30%" EndValue="60%" />
+                        <dxga:ArcScaleRange StartValue="60%" EndValue="100%" />
                     </dxga:ArcScale.Ranges>
                     <dxga:ArcScale.CustomElements>
-                        <dxga:ScaleCustomElement HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,95,0,0" FontSize="14">
-                            <TextBlock Text="高度(m)" />
+                        <dxga:ScaleCustomElement HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" FontSize="14">
+                            <TextBlock Text="高度(m)"/>
                         </dxga:ScaleCustomElement>
                     </dxga:ArcScale.CustomElements>
                 </dxga:ArcScale>
