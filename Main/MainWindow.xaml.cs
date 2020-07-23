@@ -63,7 +63,7 @@ namespace Main
             //{
             //    this.tbprocess.Text = "0/" + calList.Count;
             //}));
-            for (int i = -1; i < showDateList.Count; i++)
+            for (int i = 0; i < showDateList.Count; i++)
             {
                 if (bgMeet.CancellationPending)
                 {
@@ -172,7 +172,7 @@ namespace Main
         //执行任务
         void bgMeet_TestDoWork(object sender, DoWorkEventArgs e)
         {
-            for (int i = -1; i < showDateList.Count; i++)
+            for (int i = 0; i < showDateList.Count; i++)
             {
                 if (bgMeet.CancellationPending)
                 {
