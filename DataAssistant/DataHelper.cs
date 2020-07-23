@@ -2,13 +2,13 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using DataAssistant;
 using Log;
 
 namespace DatabaseLib
@@ -28,7 +28,7 @@ namespace DatabaseLib
         static string m_HaveVedio = "0";
         //数据库工厂接口  
 
-        static  string INIPATH = System.Environment.CurrentDirectory + @"\Config.ini";
+        static string INIPATH = System.Environment.CurrentDirectory + @"\Config.ini";
         const int STRINGMAX = 255;
 
         #region GetInstance
@@ -47,7 +47,7 @@ namespace DatabaseLib
             get
             {
                 int iTemp;
-                if (int.TryParse(m_SaveBytes,out iTemp))
+                if (int.TryParse(m_SaveBytes, out iTemp))
                 {
                     if (iTemp == 1)
                     {
@@ -89,7 +89,7 @@ namespace DatabaseLib
                     return iPort;
                 }
                 return 8081;
-             }
+            }
         }
 
         public static string LocalIP
@@ -166,7 +166,8 @@ namespace DatabaseLib
                         m_ConnStr = sb.ToString();
                     }
                 }
-                _ins = new SQLiteFactory();
+                _ins = new SQLiteFac();
+                //test
                 //switch (m_type.ToUpper())
                 //{
                 //    case "MSSQL":
@@ -175,11 +176,14 @@ namespace DatabaseLib
                 //    case "ACCESS":
                 //        _ins = new AccessFactory();
                 //        break;
+                //    case "SQLITE":
+                //        _ins = new SQLiteFac();
+                //        break;
                 //    default:
                 //        _ins = new AccessFactory();
                 //        break;
                 //}
-            } 
+            }
             catch (Exception e)
             {
                 AddErrorLog(e);
@@ -217,7 +221,7 @@ namespace DatabaseLib
         }
 
         public static string ReaderToCsv(IDataReader reader)
-        {  
+        {
             StringBuilder sb = new StringBuilder();
             var colcount = reader.FieldCount;
             while (reader.Read())
@@ -310,11 +314,19 @@ namespace DatabaseLib
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll", EntryPoint = "MoveWindow")]
+        public static extern bool MoveWindow(System.IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
+
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
 
         public static void TextBox_Name_LostFocus(object sender, EventArgs e)
         {
             IntPtr TouchhWnd = new IntPtr(0);
-            TouchhWnd = FindWindow("IPTip_Main_Window", null);
+            //TouchhWnd = FindWindow("IPTip_Main_Window", null);
+            TouchhWnd = FindWindow(null, "屏幕键盘");
             if (TouchhWnd == IntPtr.Zero)
                 return;
             PostMessage(TouchhWnd, WM_SYSCOMMAND, SC_CLOSE, 0);
@@ -333,6 +345,50 @@ namespace DatabaseLib
             {
                 MessageBox.Show(a.Message);
             }
+
+            //打开软键盘
+            //try
+            //{
+
+            //    //System.Diagnostics.Process softKey = System.Diagnostics.Process.Start("C:\\Program Files\\Common Files\\microsoft shared\\ink\\TabTip.exe");
+            //    // 上面的语句在打开软键盘后，系统还没用立刻把软键盘的窗口创建出来了。所以下面的代码用循环来查询窗口是否创建，只有创建了窗口
+            //    // FindWindow才能找到窗口句柄，才可以移动窗口的位置和设置窗口的大小。这里是关键。
+            //    IntPtr intptr = IntPtr.Zero;
+            //    intptr = FindWindow(null, "屏幕键盘");
+            //    if (IntPtr.Zero == intptr)
+            //    {
+            //        System.Diagnostics.Process softKey = System.Diagnostics.Process.Start("C:\\Windows\\System32\\osk.exe");
+            //        intptr = FindWindow("IPTip_Main_Window", null);
+            //    }
+            //        //IntPtr intptr = IntPtr.Zero;
+            //    ////while (IntPtr.Zero == intptr)
+            //    ////{
+            //    ////    System.Threading.Thread.Sleep(100);
+            //    ////intptr = FindWindow("IPTip_Main_Window", null);
+            //    ////}
+            //    //intptr = FindWindow(null, "屏幕键盘");
+
+            //    // 获取屏幕尺寸
+            //    int iActulaWidth = Screen.PrimaryScreen.Bounds.Width;
+            //    int iActulaHeight = Screen.PrimaryScreen.Bounds.Height;
+
+
+            //    // 设置软键盘的显示位置，底部居中
+            //    int posX = (iActulaWidth - 1000) / 2;
+            //    int posY = (iActulaHeight - 300);
+
+
+            //    //设定键盘显示位置
+            //    MoveWindow(intptr, posX, posY, 1000, 300, true);
+
+
+            //    //设置软键盘到前端显示
+            //    SetForegroundWindow(intptr);
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
 }

@@ -15,7 +15,7 @@
             <dxga:LinearGaugeControl.Scales>
                 <dxga:LinearScale HorizontalAlignment="Center">
                     <dxga:LinearScale.Layers>
-                        <dxga:LinearScaleLayer />
+                        <dxga:LinearScaleLayer/>
                         <dxga:LinearScaleLayer />
                     </dxga:LinearScale.Layers>
                     <dxga:LinearScale.LevelBars>
@@ -28,10 +28,16 @@
                         <dxga:LinearScaleRangeBar Value="{Binding ElementName=uc,Path=CurValue}"/>
                     </dxga:LinearScale.RangeBars>
                     <dxga:LinearScale.Ranges>
-                        <dxga:LinearScaleRange StartValue="0%" EndValue="33%" />
-                        <dxga:LinearScaleRange StartValue="33%" EndValue="67%" />
+                        <dxga:LinearScaleRange StartValue="0%" EndValue="20%"/>
+                        <dxga:LinearScaleRange StartValue="20%" EndValue="67%" />
                         <dxga:LinearScaleRange StartValue="67%" EndValue="100%" />
                     </dxga:LinearScale.Ranges>
+                    <dxga:LinearScale.StartValue>
+                        0
+                    </dxga:LinearScale.StartValue>
+                    <dxga:LinearScale.EndValue>
+                        200
+                    </dxga:LinearScale.EndValue>
                 </dxga:LinearScale>
             </dxga:LinearGaugeControl.Scales>
         </dxga:LinearGaugeControl>
